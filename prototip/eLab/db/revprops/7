@@ -1,0 +1,22 @@
+K 10
+svn:author
+V 6
+Milosh
+K 8
+svn:date
+V 27
+2015-03-13T17:15:51.648292Z
+K 7
+svn:log
+V 483
+<AXCHECKIN>---- Send Changes Summary ----
+[CHANGED]  Sitemap
+[CHANGED]  Master List
+[CHANGED]  (Page)      корисник - почетна
+[CHANGED]  (Page)      почетна (home)
+[CHANGED]  (Master)    хедер и футер
+[ADDED]    (Page)      корисник - преглед сала
+[ADDED]    (Page)      корисник - подешавање налога
+[ADDED]    (Master)    хедер и футер - пријављен
+--------------------------</AXCHECKIN>
+END

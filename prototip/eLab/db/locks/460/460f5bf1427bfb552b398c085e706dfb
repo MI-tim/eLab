@@ -1,11 +1,11 @@
 K 7
 comment
-V 18
-Check out packages
+V 20
+прототип 1.0
 K 13
 creation_date
 V 27
-2015-03-02T19:33:37.646690Z
+2015-03-18T21:42:59.243558Z
 K 14
 is_dav_comment
 V 1
@@ -21,5 +21,5 @@ V 117
 K 5
 token
 V 52
-opaquelocktoken:f42b5c54-389a-4448-9b75-5d51a4d5cac0
+opaquelocktoken:c0dea04f-164e-ed45-be37-155c25ab8249
 END
