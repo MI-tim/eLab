@@ -1,0 +1,125 @@
+@charset "UTF-8";
+
+/* Global Content Formatting and Styles */
+
+@font-face {
+    font-family: alegrey;
+    src: url(../fonts/Alegrey-Regular.ttf);
+}
+
+@font-face {
+    font-family: alegrey;
+    font-weight: bold;
+    src: url(../fonts/Alegrey-Bold.ttf);
+}
+
+@font-face {
+    font-family: ptsans;
+    src: url(../fonts/PTsans-Regular.ttf);
+}
+
+@font-face {
+    font-family: ptsans;
+    font-weight: bold;
+    src: url(../fonts/PTsans-Bold.ttf);
+}
+
+html {
+height: 100%;
+}
+
+body {
+color: #575c7a;
+font-family: alegrey-regular, arial, sans-serif;
+font-size: 13px;
+background: #ecf0f1 url(../images/pattern.png);
+height: 97%; /* treba 100 */
+}
+
+header {
+height: 110px;
+margin-top: 10px;
+background-color: #c0392b;
+}
+
+.page {
+max-width: 1320px;
+min-height: 100%;
+margin: 0px auto 0px auto;
+/*position: relative;*/
+background-color: #fff;
+border-left: 1px solid #000;
+border-right: 1px solid #000;
+}
+
+.content {
+margin-left: 240px;
+padding: 15px 0 0 15px;
+}
+
+.menu {
+font-family: ptsans;
+width: 210;
+margin: 0 0 0 30px;
+background-color: #bdc3c7;
+position: absolute;
+}
+
+#main_menu ul {
+padding: 15px 0 15px 0;
+margin: 0;
+list-style: none;
+text-align: center;
+line-height: 1.5em;
+}
+
+#main_menu ul li a {
+text-decoration: none;
+color: #2c3e50;
+}
+
+#main_menu ul li a.active {
+font-weight: bold;
+text-decoration: none;
+color: #c0392b;
+}
+
+#main_menu ul li a:hover {
+font-weight: bold;
+color: #c0392b;
+}
+
+#main_menu ul li a:active {
+font-weight: bold;
+color: #2c3e50;
+}
+
+h1 {
+font-family: alegrey;
+font-weight: bold;
+font-size: 2em;
+color:  #c0392b;
+margin: 0 0 .5em 0;
+}
+
+h2 {
+font-size: 1.7em;
+margin: 0 0 1em 0;
+}
+
+h3 {
+font-size: 1.5em;
+margin: 0 0 1em 0;
+}
+
+footer {
+height: 20px;
+bottom: 0;
+display: block;
+    position: absolute;
+    margin-left: 240px;
+font-weight: normal;
+font-size: 0.8em;
+text-align: center;
+color: #a8a8a8;
+}
