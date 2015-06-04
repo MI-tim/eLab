@@ -43,9 +43,12 @@
 		// remove user row -- OK
 		public function remove_row() {
 			$email = $this->input->post('email');
-
+			unset ($_POST);
+			
 			$this->load->model('users_table');
 			$data = $this->users_table->remove_row($email);
+
+			$this->output->append_output("success");
 		}
 
 
@@ -110,7 +113,7 @@
 	                . "<br>" . "<p>Zdravo,</p>"
 	                . "<p>Vaša nova lozinka za pristup sistemu eLab je: <b style='color: #c0392b'>" . $pass
 	                . "</b></p>"
-	                . "<p>Lozinku možete promeniti, nakon pristupa sistemu, izborom opcije - Podešavanje profila.</p>"
+	                . "<p>Lozinku možete promeniti, nakon pristupa sistemu, izborom opcije - Podešavanje naloga.</p>"
 	                . "<br>" . "<p style='color: #a3a3a3'>--- <i>automatski generisana elektronska poruka</i> ---</p>";
 	        }
 
@@ -145,14 +148,17 @@
 		 // reset users password -- OK
     	public function reset_pass() {
     		$email = $this->input->post('email');
+    		unset ($_POST);
 
 	        $pass = $this->generate_pass(16);
-	        $hash = password_hash($pass, PASSWORD_DEFAULT); // http://php.net/manual/en/function.password-hash.php
+	        $hash = password_hash($pass, PASSWORD_BCRYPT); // http://php.net/manual/en/function.password-hash.php
 
 	        $this->load->model('users_table');
 	        $this->users_table->update_password($email, $hash);
 
 	        $this->send_email($email, $pass, "2");
+
+	        $this->output->append_output("success");
     	}
 
     	// add user -- OK
@@ -161,21 +167,34 @@
     		$surname = $this->input->post('surname');
     		$email = $this->input->post('email');
     		$privilege = $this->input->post('privilege');
+    		unset ($_POST);
 
-			$pass = $this->generate_pass(16);
-	        $hash = password_hash($pass, PASSWORD_DEFAULT);
+    		if (($name !== '') || ( ($surname !== '') || ($email !== '') )) {
+    			if ( (!ctype_digit($name)) && (!ctype_digit($surname)) ) {
+	    			if (preg_match("#^.*@(student\.)?etf\.(rs|bg\.ac\.rs)$#", $email) === 1) {
+						$pass = $this->generate_pass(16);
+				        $hash = password_hash($pass, PASSWORD_BCRYPT);
 
-	        $this->load->model('users_table');
-	        $this->users_table->add_row($name, $surname, $email, $hash, $privilege);
+				        $this->load->model('users_table');
+				        $this->users_table->add_row($name, $surname, $email, $hash, $privilege);
 
-	        $this->send_email($email, $pass, "1");
+				        $this->send_email($email, $pass, "1");
+
+				        $this->output->append_output("success");
+			    	}
+			    	else {
+			    		$this->output->append_output("email");
+			    	};
+			    }
+			    else {
+			    	$this->output->append_output("number");
+			    };
+		    }
+		    else {
+		    	$this->output->append_output("empty");
+		    };
 
 
-
-    	}
-
-    	public function proba() {
-    		echo "radi";
     	}
 
 	}

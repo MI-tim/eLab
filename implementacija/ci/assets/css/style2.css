@@ -1,0 +1,289 @@
+    /* Autor: Miloš Pivić */
+
+@charset "UTF-8";
+
+html {
+	height: 100%;
+}
+
+body {
+	min-height: 100%;
+	color: #575c7a;
+	font-family: arial, sans-serif;
+	font-size: 13px;
+		border-left: 1px solid #000;
+	border-right: 1px solid #000;
+}
+
+.page {
+	max-width: 1320px;
+	min-height: 100%;
+	margin: 0px auto 0px auto;
+	position: relative;
+	background-color: #fff;
+}
+
+main {
+	position: absolute;
+	padding: 15px 0 0 15px;
+	width: 79%;
+    left: 19%;
+}
+
+.left {
+	text-align: left;
+}
+
+.panel {
+    height: 120px;
+    padding: 10px 0;
+}
+
+
+
+header {
+	height: 110px;
+	margin-top: 10px;
+	background-color: #A50000;
+	background: url(../images/header.png);
+}
+
+aside {
+	width: 210px;
+	height: 340px;
+	margin: 0 0 0 27px;
+	background-color: #bdc3c7;
+	background: url(../images/menu.png);
+	position: absolute;
+    left: 0.2%;
+}
+
+.main-content {
+	margin: 0px 15px 0px 0px;
+}
+
+
+#main_menu ul {
+	padding: 35px 0 15px 0;
+	margin: 0;
+	list-style: none;
+	text-align: center;
+	line-height: 1.7em;
+}
+
+#main_menu ul li a {
+	text-decoration: none;
+	color: #000;
+}
+
+#main_menu ul li a:hover {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+#main_menu ul li a:visited{
+	text-decoration: none;
+	color: #000;
+}
+
+#main_menu ul li a:active {
+	text-decoration: none;
+	color: #A50000;
+}
+
+#main_menu ul li.aktivna a {
+	text-decoration: none;
+	font-weight: bold;
+	color: #A50000;
+}
+
+h1 {
+	font-weight: bold;
+	font-size: 2em;
+	color:  #A50000;
+	margin: 0 0 .5em 0;
+}
+
+h2 {
+	font-size: 1.7em;
+	margin: 0 0 1em 0;
+}
+
+h3 {
+	font-size: 1.5em;
+	margin: 0 0 0.8em 0;
+}
+
+footer {
+	height: 20px;
+	bottom: 0;
+	display: block;
+    position: absolute;
+    margin-left: 240px;
+	font-weight: normal;
+	font-size: 0.8em;
+	text-align: center;
+	color: #a8a8a8;
+}
+
+/* Buttons */
+
+button.elab {
+    border: 1px solid #000;
+    display: block;
+    float: left;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #000;
+    background-color: #f5f5f5;
+    
+}
+
+.tbd {
+    border: 1px solid #000;
+    height: 25px;
+    width: 25px;  
+    background-image:url('../images/buttons/delete.png');
+    background-repeat:no-repeat;
+    color:transparent !important;
+    text-shadow:none !important;
+    box-shadow:none !important;
+}
+
+.tbd:hover {
+    border: 1px solid #f5f5f5;
+}
+
+.tbd:active {
+    border: 1px solid #a50000;
+}
+
+.tbr {
+    border: 1px solid #000;
+    height: 25px;
+    width: 25px;  
+    background-image:url('../images/buttons/reset.png');
+    background-repeat:no-repeat;
+    color:transparent !important;
+    text-shadow:none !important;
+    box-shadow:none !important;
+}
+
+.tbr:hover {
+    border: 1px solid #f5f5f5;
+}
+
+.tbr:active {
+    border: 1px solid #a50000;
+}
+
+.tbc {
+    border: 1px solid #000;
+    height: 25px;
+    width: 25px;  
+    background-image:url('../images/buttons/change.png');
+    background-repeat:no-repeat;
+    color:transparent !important;
+    text-shadow:none !important;
+    box-shadow:none !important;
+}
+
+.tbc:hover {
+    border: 1px solid #f5f5f5;
+}
+
+.tbc:active {
+    border: 1px solid #a50000;
+}
+
+
+.tbau {
+    border: 1px solid #000;
+    height: 25px;
+    width: 25px;  
+    background-image:url('../images/buttons/add_user.png');
+    background-repeat:no-repeat;
+    color:transparent !important;
+    text-shadow:none !important;
+    box-shadow:none !important;
+}
+
+.tbau:hover {
+    border: 1px solid #f5f5f5;
+}
+
+.tbau:active {
+    border: 1px solid #a50000;
+}
+
+.tbal {
+    border: 1px solid #000;
+    height: 25px;
+    width: 25px;  
+    background-image:url('../images/buttons/add_lab.png');
+    background-repeat:no-repeat;
+    color:transparent !important;
+    text-shadow:none !important;
+    box-shadow:none !important;
+}
+
+.tbal:hover {
+    border: 1px solid #f5f5f5;
+}
+
+.tbal:active {
+    border: 1px solid #a50000;
+}
+
+/* Tables */
+
+.table > tbody > tr > td, 
+.table > tbody > tr > th,
+.table > tfoot > tr > td, 
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > thead > tr > th,
+.table td {
+    padding: 15px!important;
+}
+
+tr.group,
+tr.group:hover {
+    background-color: #ddd !important;
+}
+
+tr {
+	text-align: center;
+}
+
+td.admin {
+    font-weight: bold;
+    color: #27ae60;
+}
+
+td.korisnik {
+    font-weight: bold;
+    color: #2980b9;
+}
+
+td.moderator {
+    font-weight: bold;
+    color: #d35400;
+}
+
+
+/* Forms */
+
+.form-control {
+    background: #fff;
+    border-radius: 0;
+    border: 1px solid #dce1e4;
+    box-shadow: none!important;
+    font-size: 13px;
+    padding: 6px 10px!important;
+    width: auto;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}

@@ -1,0 +1,54 @@
+2015-06-04 18:25:38 [info] Playing test case Sale - korisnik - funkcionalnosti
+2015-06-04 18:25:38 [info] Executing: |open | /ci/index.php/user |  |
+2015-06-04 18:26:06 [info] Executing: |click | css=th.sorting_asc |  |
+2015-06-04 18:26:07 [info] Executing: |click | css=th.sorting_desc |  |
+2015-06-04 18:26:07 [info] Executing: |click | css=th.sorting |  |
+2015-06-04 18:26:07 [info] Executing: |click | css=th.sorting_asc |  |
+2015-06-04 18:26:08 [info] Executing: |click | //table[@id='labs']/thead/tr/th[3] |  |
+2015-06-04 18:26:08 [info] Executing: |click | css=th.sorting_asc |  |
+2015-06-04 18:26:08 [info] Executing: |click | //table[@id='labs']/thead/tr/th[4] |  |
+2015-06-04 18:26:08 [info] Executing: |click | css=th.sorting_asc |  |
+2015-06-04 18:26:09 [info] Test case passed
+2015-06-04 18:26:09 [info] Playing test case Podesavanje profila - korisnik - NOK
+2015-06-04 18:26:09 [info] Executing: |open | /ci/index.php/user |  |
+2015-06-04 18:26:20 [info] Executing: |clickAndWait | link=Podešavanje naloga |  |
+2015-06-04 18:26:20 [info] Executing: |type | id=old_p | 123 |
+2015-06-04 18:26:21 [info] Executing: |type | id=new_p | miki |
+2015-06-04 18:26:22 [info] Executing: |type | id=rnew_p | miki |
+2015-06-04 18:26:22 [info] Executing: |click | id=cbp |  |
+2015-06-04 18:26:22 [info] Test case passed
+2015-06-04 18:26:22 [info] Playing test case Podesavanje profila - korisnik - OK
+2015-06-04 18:26:22 [info] Executing: |open | /ci/index.php/uprofile |  |
+2015-06-04 18:27:02 [info] Executing: |type | id=old_p | miki |
+2015-06-04 18:27:03 [info] Executing: |type | id=new_p | 123 |
+2015-06-04 18:27:03 [info] Executing: |type | id=rnew_p | 123 |
+2015-06-04 18:27:04 [info] Executing: |click | id=cbp |  |
+2015-06-04 18:27:04 [info] Test case passed
+2015-06-04 18:27:04 [info] Playing test case Korisnici sistema - admin - dodavanje korisnika OK
+2015-06-04 18:27:04 [info] Executing: |open | /ci/index.php/admin |  |
+2015-06-04 18:27:43 [info] Executing: |type | id=name | Marko |
+2015-06-04 18:27:43 [info] Executing: |type | id=surname | Marković |
+2015-06-04 18:27:44 [info] Executing: |type | id=email | marko321@etf.rs |
+2015-06-04 18:27:44 [info] Executing: |select | id=privilege | label=Moderator |
+2015-06-04 18:27:45 [info] Executing: |click | id=tbau |  |
+2015-06-04 18:27:45 [info] Test case passed
+2015-06-04 18:27:45 [info] Playing test case Korisnici sistema - admin - uklanjanje korisnika na osnovu pretrage
+2015-06-04 18:27:45 [info] Executing: |open | /ci/index.php/admin |  |
+2015-06-04 18:28:24 [info] Executing: |type | css=input[type="search"] | marko |
+2015-06-04 18:28:25 [info] Executing: |click | id=remove_user |  |
+2015-06-04 18:28:25 [info] Executing: |click | css=button.confirm |  |
+2015-06-04 18:28:26 [info] Test case passed
+2015-06-04 18:28:26 [info] Playing test case Lab sale - admin - dodavanje sale - NOK
+2015-06-04 18:28:26 [info] Executing: |open | /ci/index.php/admin |  |
+2015-06-04 18:29:02 [info] Executing: |clickAndWait | link=Laboratorijske sale |  |
+2015-06-04 18:29:03 [info] Executing: |type | id=mark | P-28 |
+2015-06-04 18:29:04 [info] Executing: |select | id=location | label=Računski centar |
+2015-06-04 18:29:05 [info] Executing: |type | id=numwp | 160 |
+2015-06-04 18:29:05 [info] Executing: |click | id=tbal |  |
+2015-06-04 18:29:06 [info] Test case passed
+2015-06-04 18:29:06 [info] Playing test case Podesavanje naloga - admin - NOK
+2015-06-04 18:29:06 [info] Executing: |open | /ci/index.php/labs |  |
+2015-06-04 18:29:18 [info] Executing: |clickAndWait | link=Podešavanje naloga |  |
+2015-06-04 18:29:19 [info] Executing: |click | id=cbp |  |
+2015-06-04 18:29:20 [info] Test case passed
+2015-06-04 18:29:20 [info] Test suite completed: 7 played,  all passed!

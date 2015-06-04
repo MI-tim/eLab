@@ -11,7 +11,10 @@
 
 		// logout user -- TODO
 		public function index() {
-			echo "logout";
+			$this->load->library('session');
+			$this->session->sess_destroy();
+
+			$this->load->view('login');
 		}
 
 	}

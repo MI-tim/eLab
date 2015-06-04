@@ -23,6 +23,18 @@ class Labs_table extends CI_Model {
 		}
 	}
 
+	// get all entries from db, user view -- OK
+	public function get_entries_u() {
+		$this->db->select('oznaka, lokacija, brm, irm');
+		$query = $this->db->get('sale');
+		if ($query->num_rows() > 0) {
+            foreach ($query->result() as $temp) {
+                $array[] = $temp;
+            }
+			return $array;
+		}
+	}
+
 	// add entry into db -- OK
 	public function add_row($mark, $location, $nwork) {
 		$data = array(

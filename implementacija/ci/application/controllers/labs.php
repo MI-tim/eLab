@@ -42,19 +42,35 @@
 		// remove lab row -- OK
 		public function remove_row() {
 			$mark = $this->input->post('mark');
+			unset ($_POST);
 
 			$this->load->model('labs_table');
 			$data = $this->labs_table->remove_row($mark);
+
+			$this->output->append_output("success");
 		}
 
 		// add lab -- OK
     	public function add_row() {
     		$mark = $this->input->post('mark');
     		$location = $this->input->post('location');
-    		$nwork = $this->input->post('nwork');
+    		$numwp = $this->input->post('numwp');
+    		unset ($_POST);
 
-	        $this->load->model('labs_table');
-	        $this->labs_table->add_row($mark, $location, $nwork);
+    		if ( ($mark !== '') || ($numwp !== '') ) {
+		        if ( (ctype_digit($numwp)) && ( ((int)$numwp > 0) && ((int)$numwp < 151) ) ) {
+			        $this->load->model('labs_table');
+			        $this->labs_table->add_row($mark, $location, $numwp);
+
+			        $this->output->append_output("success");
+			    }
+			    else {
+			    	$this->output->append_output("format");
+			    };
+		    }
+		    else {
+		    	$this->output->append_output("empty");
+		    };
 
     	}
 	}

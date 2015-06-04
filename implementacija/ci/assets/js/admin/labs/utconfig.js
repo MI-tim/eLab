@@ -7,7 +7,7 @@ $(document).ready( function () {
             "orderable": false,
             "targets": -1,
             "data": null,
-            "defaultContent": "<button id='remove_lab'>D</button>"
+            "defaultContent": "<button id='remove_lab' class='tbd'></button>"
 	    } ],
 	    "aoColumns": [
 	    	{ "sWidth": null },

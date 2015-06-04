@@ -6,8 +6,12 @@
 
 	<link href="<?php echo base_url('assets/images/favicon.png')?>" rel="shortcut icon" type="image/png"/>
 	<link href="<?php echo base_url('assets/css/style.css')?>" rel='stylesheet' type='text/css'/>
+	<link href="<?php echo base_url('assets/js/datatables/media/css/jquery.dataTables.css')?>" rel='stylesheet' type='text/css'/>
 	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+	<script src="<?php echo base_url('assets/js/sweetalert2-master/dist/sweetalert2.min.js')?>"></script>
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/js/sweetalert2-master/dist/sweetalert2.css')?>"/>
 
 	<script src="<?php echo base_url('assets/js/jquery-2.1.4.min.js')?>"></script>
 	<script src="<?php echo base_url('assets/js/jquery-ui/jquery-ui.min.js')?>"></script>

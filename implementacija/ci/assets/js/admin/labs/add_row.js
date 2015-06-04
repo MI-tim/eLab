@@ -2,29 +2,84 @@ $(document).ready(function() {
 
     // Autor: Miloš Pivić
 
-    $("#add_row_btn").click(function(event) {
-        event.preventDefault();
-        var mark = $("input#mark").val();
-        var location = $("input#location").val();
-        var nwork = $("input#nwork").val();
+    var table = $('#add_lab').DataTable();
 
-        $('#labs').DataTable().row.add( [ mark, location, nwork ] ).draw();
+    $('#tbal').click( function() {
+        var mark = table.$('#mark').serialize();
+        var location = table.$('#location').serialize();
+        var numwp = table.$('#numwp').serialize();
 
-        $.ajax({
-            type: "POST",
-            url: "http://localhost:8000/ci/index.php/labs/add_row",
-            data: {mark: mark, location: location, nwork: nwork},
-            success: function(data) {
-                alert("Uspešno ste dodali laboratorijsku salu.");
-                
-                // TODO - autoclose popup
+        if ( (!mark.substring(5,120)) || (!numwp.substring(6,120)) ) { 
+            swal({
+                title: "",
+                text: "Tražena polja ne smeju biti prazna!",
+                type: "error",
+                confirmButtonText: "OK"
+                }
+            );
+        }
+        else {
+            var base_url = window.location.origin;
+            base_url = base_url + "/ci/index.php/labs/add_row";
 
-                $('.ajax').removeClass('ajax');
-            },
-            error:function (xhr, ajaxOptions, thrownError){
-                // error, alert
-                alert(thrownError);
-            }
-        });
+            $.ajax({
+                type: "POST",
+                url: base_url,
+                data: mark + '&' + location + '&' + numwp,
+                success: function(data){ 
+                    $('.ajax').removeClass('ajax');
+                    if (data == "success") {
+                        swal({
+                            title: "",
+                            text: "Uspešno ste dodali laboratorijsku salu!",
+                            type: "success",
+                            confirmButtonText: "OK"
+                            },
+                            function(isConfirm) {
+                                window.location.reload(true);
+                                //$('#labs').DataTable().row.add( [ mark.substring(5,120), location.substring(9,120), numwp.substring(6,120) ] ).draw();
+                            }
+                        );     
+                    };
+                    if (data == "empty") {
+                        swal({
+                            title: "",
+                            text: "Tražena polja ne smeju biti prazna!",
+                            type: "error",
+                            confirmButtonText: "OK"
+                            }
+                        );
+                    };
+                    if (data == "format") {
+                        swal({
+                            title: "",
+                            text: "Uneti podaci ne odgovaraju traženom formatu!",
+                            type: "error",
+                            confirmButtonText: "OK"
+                            },
+                            function(isConfirm) {
+                                window.location.reload(true); 
+                            }
+                        );
+                    };
+                },
+                error:function (xhr, ajaxOptions, thrownError){
+                     // error, alert user
+                     swal({
+                      title: "Greška!",
+                      text: "Došlo je do greške prilikom komunikacije\r\n" + thrownError,
+                      type: "error",
+                      confirmButtonText: "OK",
+                    });
+                    
+                }
+            });   
+            return false;
+        }
+
+        
     } );
+
+
+
 } );

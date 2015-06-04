@@ -76,6 +76,20 @@ class Users_table extends CI_Model {
 		$this->db->update('korisnici', $data); //Note: All values are escaped automatically producing safer queries.
 	}
 
+	// find user hashed pass -- NOT TESTED
+	public function get_password($email){
+		$this->db->select('password');
+		$this->db->where('email', $email);
+		$query = $this->db->get('korisnici');
+
+		if ($query->num_rows() > 0) {
+            foreach ($query->result() as $temp) {
+                $array[] = $temp;
+            }
+			return $array;
+		}
+	}
+
 }
 
 ?>

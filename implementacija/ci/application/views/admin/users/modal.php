@@ -1,37 +1,42 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');?>
 
 <div class="panel">
-		<a href="#add_row" id="add_row_pop">Dodaj korisnika</a>
-</div>
+    <table id="autb" class="display" cellspacing="0" width="98.5%" align="left">
+        <thead>
+            <tr>
+                <th class="left">Dodaj korisnika:</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
 
-<div>
+        <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </tfoot>
 
-	<a href="#x" class="overlay" id="add_row"></a>
-    <div class="popup">
-        <h3>Novi korisnik</h3>
-        <p>Unesite podatke o novom korisniku:</p>
+        <tbody>
+            <tr>
+                <td><input id="name" name="name" type="text" placeholder="Ime" required pattern="^[a-zA-ZđĐšŠćĆŽž]*$"/></td>
+                <td><input id="surname" name="surname" type="text" placeholder="Prezime" required pattern="^[a-zA-ZđĐšŠćĆŽž]*$"/></td>
+                <td><input id="email" name="email" type="email" placeholder="eMail" required pattern="^.*@(student\.)?etf\.(rs|bg\.ac\.rs)$"/></td>
+                <td>
+                    <select name="privilege" id="privilege">
+                        <option value="Korisnik" selected>Korisnik</option>
+                        <option value="Moderator">Moderator</option>
+                        <option value="Administrator">Administrator</option>
+                    </select>
+                </td>
+                <td></td>
 
-		<form id="add_row_form" action="#" method="post">
-            <div>
-            	<input type="text" id="name" class="form-control" placeholder="Ime" required>
-            </div>
-            <div>
-                <input type="text" id="surname" class="form-control" placeholder="Prezime" required>
-            </div>
-            <div>
-                <input type="email" id="email" class="form-control" placeholder="eMail" required pattern=".*@(student\.)?etf\.(rs|bg\.ac\.rs)">
-            </div>
-            <div>
-                <select name="privilege" id="privilege" class="form-control">
-                    <option value="Korisnik" selected>Korisnik</option>
-                    <option value="Moderator">Moderator</option>
-                    <option value="Administrator">Administrator</option>
-                </select>
-            </div>
-            <button type="submit" id="add_row_btn" class="elab">Dodaj</button>
-        </form>
-
-        <a class="close" id="close_btn" href="#close"></a>
-	</div>
-
+            </tr>
+        </tbody>
+    </table>
 </div>

@@ -3,18 +3,6 @@ $(document).ready( function () {
 	// Autor: Miloš Pivić
 
 	$('#labs').DataTable( {
-		"columnDefs": [ {
-            "orderable": false,
-            "targets": -1,
-            "data": null,
-            "defaultContent": "db missing!"
-	    } ],
-	    "aoColumns": [
-	    	{ "sWidth": null },
-        	{ "sWidth": null },
-        	{ "sWidth": null },
-        	{ "sWidth": "15%"}
-        ],
 		"language": {
 			"emptyTable":     "Ne postoje laboratorijske sale u sistemu",
 			"info":           "_START_ - _END_ od ukupno _TOTAL_ unosa",
@@ -38,6 +26,16 @@ $(document).ready( function () {
 		        "sortDescending": ": sortiraj kolonu opadajuće"
 		    }
 		},
+
+		"createdRow": function ( row, data, index ) {
+
+			if ( parseInt(data[2]) == parseInt(data[3]) ) {
+				$('td', row).eq(3).addClass('zeleno');
+			}
+			else if ( parseInt(data[2]) > parseInt(data[3]) ) {
+				$('td', row).eq(3).addClass('crveno');
+			}
+		}
 
 	} );
 

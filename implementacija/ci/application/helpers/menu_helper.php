@@ -8,6 +8,7 @@ if(!function_exists('active_link')) {
 	    $CI = get_instance();
 	    // Getting router class to active.
 	    $class = $CI->router->fetch_class();
-	    return ($class == $controller) ? 'active' : '';
+	    
+	    return ($class == $controller) ? 'aktivna' : '';
   	}
 }?>

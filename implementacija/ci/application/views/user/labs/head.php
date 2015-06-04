@@ -6,7 +6,6 @@
 
 	<link href="<?php echo base_url('assets/images/favicon.png')?>" rel="shortcut icon" type="image/png"/>
 	<link href="<?php echo base_url('assets/css/style.css')?>" rel='stylesheet' type='text/css'/>
-	<link href="<?php echo base_url('assets/css/modal.css')?>" rel='stylesheet' type='text/css'/>
 	<link href="<?php echo base_url('assets/js/datatables/media/css/jquery.dataTables.css')?>" rel='stylesheet' type='text/css'/>
 	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>

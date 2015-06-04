@@ -29,7 +29,7 @@
 		// populate labs table rows from db -- OK
 		private function populate_rows() {
 			$this->load->model('labs_table');
-			$data = $this->labs_table->get_entries();
+			$data = $this->labs_table->get_entries_u();
 
 	        return $data;
 		}
