@@ -1,4 +1,4 @@
-<?php
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 Class Login_Database extends CI_Model {
 
@@ -8,19 +8,34 @@ Class Login_Database extends CI_Model {
 		$this->load->database();
 	}
 
-	
 	// Read data using username and password
 	public function login($data) {
 
-		// Hesira se sifra da bi se uporedila sa sifrom u bazi, algoritam je isti i daje istu hesiranu vrednost
-		// $hash = password_hash($data['password'], PASSWORD_DEFAULT);
-		// $condition = "user_name =" . "'" . $data['username'] . "' AND " . "user_password =" . "'" . $hash . "'";
+		// Hash verify
+		// $pass = $data['password'];
+		// $condition = "email =" . "'" . $data['email'] . "'";
+		// $this->db->select('password');
+		// $this->db->from('korisnici');
+		// $this->db->where($condition);
+		// $this->db->limit(1);
+		// $query = $this->db->get();
 
-		// Resenje bez hesiranja
-		$condition = "user_name =" . "'" . $data['username'] . "' AND " . "user_password =" . "'" . $data['password'] . "'";
+		// if ($query->num_rows() == 1) {
+		// 	$result = $query->row();
+		// 	if (password_verify($pass, $result->password)) {
+		// 		return $query->row();
+		// 	}
+		// 	else return false;
+		// } 
+		// else {
+		// 	return false;
+		// }
+		
+		// // Resenje bez hesiranja
+		$condition = "email =" . "'" . $data['email'] . "' AND " . "password =" . "'" . $data['password'] . "'";
 
 		$this->db->select('*');
-		$this->db->from('user_login');
+		$this->db->from('korisnici');
 		$this->db->where($condition);
 		$this->db->limit(1);
 		$query = $this->db->get();
@@ -34,11 +49,11 @@ Class Login_Database extends CI_Model {
 	}
 
 	// Read data from database to show data in admin page
-	public function read_user_information($username) {
+	public function read_user_information($data) {
 
-		$condition = "user_name =" . "'" . $username . "'";
+		$condition = "email =" . "'" . $data['email'] . "'";
 		$this->db->select('*');
-		$this->db->from('user_login');
+		$this->db->from('korisnici');
 		$this->db->where($condition);
 		$this->db->limit(1);
 		$query = $this->db->get();

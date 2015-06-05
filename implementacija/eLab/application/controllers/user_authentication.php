@@ -1,17 +1,5 @@
-<?php
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-//session_start(); //we need to start session in order to access it through CI
-
-// $status = session_status();
-// if($status == PHP_SESSION_NONE){
-//     //There is no active session
-//     session_start();
-// }
-// else if($status == PHP_SESSION_ACTIVE){
-// 	//Destroy current and start new one
-// 	session_destroy();
-// 	session_start();
-// }
 
 class User_Authentication extends CI_Controller {
 
@@ -35,50 +23,76 @@ class User_Authentication extends CI_Controller {
 
 	// Show login page
 	public function index() {
-		$this->load->view('login_form');
+		$data['title'] = "eLab | Prijava";
+			$data['main_title'] = "Prijava na sistem:";
+
+			$this->load->view('/login/+html');
+			$this->load->view('/login/head', $data);
+			$this->load->view('/login/+body');
+			$this->load->view('/login/header');
+			$this->load->view('/login/menu');
+			$this->load->view('/login/+main', $data);
+			$this->load->view('/login/form');
+			$this->load->view('/login/-main');
+			$this->load->view('/login/-body');
+			$this->load->view('/login/-html');
 	}
 
-	
 	// Check for user login process
 	public function user_login_process() {
 
-		$this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
 
 		if ($this->form_validation->run() == FALSE) {
-			// if(isset($this->session->userdata['logged_in'])){
-			// 	$this->load->view('admin_page');
-			// }
-			// else {
-				$this->load->view('login_form');
-			// }
+			$this->load->view('login_form');
 		}
 		
 		else {
 			$data = array(
-				'username' => $this->input->post('username'),
+				'email' => $this->input->post('email'),
 				'password' => $this->input->post('password')
 			);
 			$result = $this->login_database->login($data);
 			
 			if ($result == TRUE) {
 
-				$username = $this->input->post('username');
-				$result = $this->login_database->read_user_information($username);
+				//$email = $this->input->post('email');
+				$result = $this->login_database->read_user_information($data);
 				
 				if ($result != false) {
 					$session_data = array(
-						'username' => $result[0]->user_name,
-						'email' => $result[0]->user_email,
+						'ime' => $result[0]->ime,
+						'prezime' => $result[0]->prezime,
+						'email' => $result[0]->email,
 					);
 					// Add user data in session
 					$this->session->set_userdata('logged_in', $session_data);
-					$this->load->view('admin_page');
+
+					// Redirect based on privilege
+					switch ($result[0]->privilegija) {
+						case 'Korisnik':
+							redirect('user/index');
+							break;
+						case 'Moderator':
+							redirect('mod/index');
+							break;
+						case 'Administrator':
+							redirect('admin/index');
+							break;
+						
+						default:
+							$data = array(
+							'error_message' => 'Greška u bazi.'
+							);
+							$this->load->view('login_page', $data);
+							break;
+					}
 				}
 			}
 			else {
 				$data = array(
-					'error_message' => 'Invalid Username or Password'
+					'error_message' => 'Pogrešno ste uneli email ili lozinku.'
 				);
 				$this->load->view('login_form', $data);
 			}
@@ -86,16 +100,16 @@ class User_Authentication extends CI_Controller {
 	}
 
 	// Logout from admin page
-	public function logout() {
+	// public function logout() {
 
-		// Removing session data
-		$sess_array = array(
-			'username' => ''
-		);
-		$this->session->unset_userdata('logged_in', $sess_array);
-		$data['message_display'] = 'Successfully Logout';
-		$this->load->view('login_form', $data);
-	}
+	// 	// Removing session data
+	// 	$session_data = array(
+	// 		'ime', 'prezime', 'email'
+	// 	);
+	// 	$this->session->unset_userdata('logged_in', $session_data);
+	// 	$data['message_display'] = 'Uspešno ste se odjavili.';
+	// 	$this->load->view('login_form', $data);
+	// }
 
 }
 
